@@ -11,6 +11,7 @@ import (
 
 	"github.com/spf13/pflag"
 	"github.com/timescale/tsbs/cmd/tsbs_generate_data/common"
+	"github.com/timescale/tsbs/cmd/tsbs_generate_data/coredata"
 	"github.com/timescale/tsbs/cmd/tsbs_generate_data/devops"
 	"github.com/timescale/tsbs/cmd/tsbs_generate_data/iot"
 	"github.com/timescale/tsbs/cmd/tsbs_generate_data/serialize"
@@ -215,6 +216,15 @@ func (g *DataGenerator) getSimulatorConfig(dgc *DataGeneratorConfig) (common.Sim
 			InitHostCount:   dgc.InitialScale,
 			HostCount:       dgc.Scale,
 			HostConstructor: devops.NewHostCPUSingle,
+		}
+	case useCaseCoredata:
+		ret = &coredata.SimulatorConfig{
+			Start: g.tsStart,
+			End:   g.tsEnd,
+
+			InitGeneratorScale:   dgc.InitialScale,
+			GeneratorScale:       dgc.Scale,
+			GeneratorConstructor: coredata.NewDevice,
 		}
 	default:
 		err = fmt.Errorf("unknown use case: '%s'", dgc.Use)

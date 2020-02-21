@@ -17,7 +17,7 @@ const (
 	FormatSiriDB      = "siridb"
 	FormatTimescaleDB = "timescaledb"
 	FormatAkumuli     = "akumuli"
-	FormatCrateDB 	  = "cratedb"
+	FormatCrateDB     = "cratedb"
 )
 
 const (
@@ -53,6 +53,7 @@ const (
 	useCaseCPUSingle = "cpu-single"
 	useCaseDevops    = "devops"
 	useCaseIoT       = "iot"
+	useCaseCoredata  = "coredata"
 )
 
 var useCaseChoices = []string{
@@ -60,6 +61,7 @@ var useCaseChoices = []string{
 	useCaseCPUSingle,
 	useCaseDevops,
 	useCaseIoT,
+	useCaseCoredata,
 }
 
 // ParseUTCTime parses a string-represented time of the format 2006-01-02T15:04:05Z07:00
